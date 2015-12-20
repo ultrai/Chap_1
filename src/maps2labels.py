@@ -1,4 +1,9 @@
+import os, sys
+import glob
+import scipy.io as sio
 import numpy as np
+
+
 def maps2labels(I,L):
     Label = []
     Label2 = []
@@ -7,15 +12,28 @@ def maps2labels(I,L):
     Label = np.array(Label, dtype=uint8)
     Label2 = np.array(Label2, dtype=uint8)
     Label = np.array(Label, dtype=uint8)
-   "function_docstring"
-   function_suite
-   return [expression]
-function [ Label,Label2, Images,list] = maps2labels( I,L )
-%converts indexes of layer contours to label images
-    Label = [];
-    Label2 = [];
-    Images = [];
-    list = [];
+  
+   return [ Label,Label2, Images, list]
+
+
+
+os.chdir("/home/mict/Desktop/edges-master" )
+files = glob.glob(os.getcwd()+"/Data/*.mat")
+for x in range(files):
+    x=0
+    data = sio.loadmat(files[x])
+    I = data['images']    #data.keys()
+    L = data['manualLayers1']
+    Label = []
+    Label2 = []
+    Images = []
+    list = []
+    
+    
+    Label = np.uint8([])
+    Label2 = np.uint8([])
+    Images = np.uint8([])
+
     for scan = 1:size(I,3)
         image = I(:,:,scan);
 %         image = imresize(image,0.5);
