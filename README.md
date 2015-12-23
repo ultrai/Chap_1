@@ -10,4 +10,28 @@
 
 
 ## Dataset
+Prof. Sina Farsiu's team from Duke has generously made the data available [here!](http://people.duke.edu/~sf59/Chiu_BOE_2014_dataset.htm)
 
+## Usage
+Train models
+```bash
+>> run(main)
+````
+Evaluate models
+```bash
+>> run(Evaluation)
+````
+Test for an image
+``` bash
+>> I = imaread('test_image.jpg');
+>> Out = zeros(size(I,1),size(I,2),8);
+>> parfor layer = 1:8
+>>        opts = edgesTrain();
+>>        opts.modelDir='models/';          % model will be in models/forest
+>>        opts.modelFnm=['modelBsds_layer',num2str(layer)];  
+>>        model = edgesTrain(opts);
+>>        E = edgesDetect(model,I);
+>>        Out(:,:,layer) = shotest_path(mat2gray(E));
+>>end
+>> imshow(sum(Out,3))
+```
