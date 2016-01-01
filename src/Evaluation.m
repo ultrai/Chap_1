@@ -101,6 +101,26 @@ for layer= 1:7
     width_Error_Pred_GT2 = mean2(abs(width_GT2(layer,:,:)-width_Pred(layer,:,:)));
     width_Error = cat(1,width_Error,[width_Error_AN_GT1,width_Error_AN_GT2,width_Error_AD_GT1,width_Error_AD_GT2,width_Error_Pred_GT1,width_Error_Pred_GT2]);
 end
-
 Error1 = width_Error;
+
+Images = Images(:,col_start:col_end,:);
+Labels_GT1 = zeros(size(Images)); %label manual1
+Labels_GT2 = zeros(size(Images)); %label manual2
+Labels_AN = zeros(size(Images)); %label manual1
+Labels_DME = zeros(size(Images)); %label manual2
+Labels_Pred = zeros(size(Images)); %label prediction
+parfor Idx = 1:size(Images,3)
+    Img = Images(:,:,Idx)/255;
+    Labels_GT1(:,:,Idx) = maps2labels( images,GT1(:,:,Idx));
+    Labels_GT2(:,:,Idx) = maps2labels( images,GT2(:,:,Idx));
+    Labels_AN(:,:,Idx) = maps2labels( images,AN(:,:,Idx));
+    Labels_DME(:,:,Idx) = maps2labels( images,DME(:,:,Idx));
+    Labels_Pred(:,:,Idx) = maps2labels( images,Pred(:,:,Idx));
+end
+C_AN1 = confusionmat(Labels_GT1,Labels_AN);
+C_AN2 = confusionmat(Labels_GT2,Labels_AN);
+C_DME1 = confusionmat(Labels_GT1,Labels_DME);
+C_DME2 = confusionmat(Labels_GT2,Labels_DME);
+C_Pred1 = confusionmat(Labels_GT1,Labels_Pred);
+C_Pred2 = confusionmat(Labels_GT2,Labels_Pred);
 
