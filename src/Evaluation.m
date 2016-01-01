@@ -117,10 +117,10 @@ parfor Idx = 1:size(Images,3)
     Labels_DME(:,:,Idx) = maps2labels( images,DME(:,:,Idx));
     Labels_Pred(:,:,Idx) = maps2labels( images,Pred(:,:,Idx));
 end
-C_AN1 = confusionmat(Labels_GT1,Labels_AN);
-C_AN2 = confusionmat(Labels_GT2,Labels_AN);
-C_DME1 = confusionmat(Labels_GT1,Labels_DME);
-C_DME2 = confusionmat(Labels_GT2,Labels_DME);
-C_Pred1 = confusionmat(Labels_GT1,Labels_Pred);
-C_Pred2 = confusionmat(Labels_GT2,Labels_Pred);
+C_AN1 = confusionmatStats(Labels_GT1,Labels_AN);
+C_AN2 = confusionmatStats(Labels_GT2,Labels_AN);
+C_DME1 = confusionmatStats(Labels_GT1,Labels_DME);
+C_DME2 = confusionmatStats(Labels_GT2,Labels_DME);
+C_Pred1 = confusionmatStats(Labels_GT1,Labels_Pred);
+C_Pred2 = confusionmatStats(Labels_GT2,Labels_Pred);
 
