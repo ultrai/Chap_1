@@ -1,5 +1,5 @@
-function Out = image_result( Img,L1,L2 )
-
+function [Out Out1 Out2] = image_result( Img,L1,L2 )
+Img(Img==1)=0.01;
 I = Img(:,:,1);
 
 ll = [[20,10,240];[2,123,10];[240,10,10];[18,170,170];[170,30,170];[180,180,0];[17,160,170];[10,10,220];[10,120,10]];
@@ -27,5 +27,8 @@ n=round(size(Mask1,2)/2);
 Mask = cat(2,Mask1(:,1:n,:),Mask2(:,n+1:end,:))/255;
 I = Img;
 Out = I .*Mask;
+Out1 = Mask1;
+Out2 = Mask2;
+
 %figure,imshow(Out)
 end
