@@ -27,16 +27,39 @@ def interp_nan(layers):
     return L
 
 def maps2labels(I,L):
-    Label = []
-    Label2 = []
-    Images = []
     list = []
     Label = np.array(Label, dtype=uint8)
     Label2 = np.array(Label2, dtype=uint8)
     Label = np.array(Label, dtype=uint8)
+    for scan in range(I.shape[2]):
+        image = I[:,:,scan]
+        s = image.shape()
+        l = L[:,:,scan]
+        if np.sum(~np.isnan(l.sum(0)))>50:
+            list = list.append(scan)
+            l = np.round(l)
+            l[l<3]=3
+            l[l>s[0]] = s[0]
+            layers = np.zeros((l.shape(0)+1,s[2],2))
+            layers[1::,:,0) = l
+            layers(::-2,:,1) = l-1
+            layers(-1,:,1) = s[0]-1;
+            label = np.zeros((s(0),s(1)))
+            label2 = np.zeros((s(0),s(1)))
+            for col in range(s(1)):
+                for lay in range(layers.shape[0])):
+                    label[layers[lay,col,0]:layers[lay,col,1],col)=lay+1
+                    label2[layers[lay,col,0],col]=lay
+            Label = np.concatenate((Label,label),axis=2)
+            Label2 = np.concatenate((Label2,label2),axis=2)
+            Images = np.concatenate((Images, image),axis=2)
+    return (Label,Label2,Images,list)    
 
 os.chdir("/home/mict/Desktop/edges-master" )
 files = glob.glob(os.getcwd()+"/Data/*.mat")
+Labels = []
+Contours = []
+Images = []
 for x in range(files):
     x=0
     data = sio.loadmat(files[x])
@@ -49,7 +72,11 @@ for x in range(files):
     Label2 = L2[:,:,nan_check>0]
     L1 = interp_nan(Label1)
     L2 = interp_nan(Label2)
-    Label = np.uint8([])
-    Label2 = np.uint8([])
-    Images = np.uint8([])
-   
+    L_M1,C_M1,Im,temp = maps2labels(I,L1-1) # as python is 0 index
+    L_M2,C_M2,temp,temp = maps2labels(I,L2-1) # as python is 0 index
+    L,C,temp,temp = maps2labels(I,0.5*(L1+L2)-1) # as python is 0 index
+    Labels = Labels.append(L)
+    Contours = Contours.append(C)
+    Images = Images.append(Im)
+    
+    
