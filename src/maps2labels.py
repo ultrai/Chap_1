@@ -54,7 +54,30 @@ def maps2labels(I,L):
             Label2 = np.concatenate((Label2,label2),axis=2)
             Images = np.concatenate((Images, image),axis=2)
     return (Label,Label2,Images,list)    
-
+import random
+def random_sample(L):
+    for stack in range(L.shape[0]):
+        l = L[stack,0,:,:]
+        a = 512*512
+        for lay in range(l.max()):
+            if ((l==lay).sum())<a:
+                a = (l==lay).sum()
+                t = lay
+        BW = np.zeros((*l.shape()))+l.max()+1
+        for lay in range(l.max()):
+            bw = l==lay
+            li = np.where(bw == True)
+            r = range(len(li[0]))
+            random.shuffle(r)
+            li_temp = li[0]
+            x = li_temp[r]
+            li_temp = li[1]
+            y = li_temp[r]
+            x = x[:a]
+            y = y[:a]
+            BW[x,y] = lay
+    return BW        
+           
 os.chdir("/home/mict/Desktop/edges-master" )
 files = glob.glob(os.getcwd()+"/Data/*.mat")
 Labels = []
