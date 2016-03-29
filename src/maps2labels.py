@@ -1,7 +1,10 @@
-import os, sys
+import os
+dr = '/home/mict/Chap_1/data'
+os.chdir(dr)
+os.getcwd() 
 import glob
+ls = sorted(glob.glob(dr+'/*.mat'))
 import scipy.io as sio
-
 import numpy as np
 nan = np.nan
 isnan = np.isnan
@@ -28,67 +31,37 @@ def interp_nan(layers):
 
 def maps2labels(I,L):
     list = []
-    Label = np.array(Label, dtype=uint8)
-    Label2 = np.array(Label2, dtype=uint8)
-    Label = np.array(Label, dtype=uint8)
+    Label = np.zeros((I.shape[0],I.shape[1],I.shape[2]), dtype='uint8')
+    Label2 = np.zeros((I.shape[0],I.shape[1],I.shape[2]), dtype='uint8')
     for scan in range(I.shape[2]):
         image = I[:,:,scan]
-        s = image.shape()
+        s = image.shape
         l = L[:,:,scan]
         if np.sum(~np.isnan(l.sum(0)))>50:
-            list = list.append(scan)
+            list.append(scan)
             l = np.round(l)
             l[l<3]=3
             l[l>s[0]] = s[0]
-            layers = np.zeros((l.shape(0)+1,s[2],2))
-            layers[1::,:,0) = l
-            layers(::-2,:,1) = l-1
-            layers(-1,:,1) = s[0]-1;
-            label = np.zeros((s(0),s(1)))
-            label2 = np.zeros((s(0),s(1)))
-            for col in range(s(1)):
-                for lay in range(layers.shape[0])):
-                    label[layers[lay,col,0]:layers[lay,col,1],col)=lay+1
+            layers = np.zeros((l.shape[0]+1,s[1],2), dtype='int')
+            layers[1::,:,0] = l
+            layers[:-1,:,1] = l
+            layers[-1,:,1] = s[0]
+            label = np.zeros((s[0],s[1]))
+            label2 = np.zeros((s[0],s[1]))
+            for col in range(s[1]):
+                for lay in range(layers.shape[0]):
+                    label[layers[lay,col,0]:layers[lay,col,1],col]=lay+1
                     label2[layers[lay,col,0],col]=lay
-            Label = np.concatenate((Label,label),axis=2)
-            Label2 = np.concatenate((Label2,label2),axis=2)
-            Images = np.concatenate((Images, image),axis=2)
-    return (Label,Label2,Images,list)    
-import random
-def random_sample(L):
-    for stack in range(L.shape[0]):
-        l = L[stack,0,:,:]
-        a = 512*512
-        for lay in range(l.max()):
-            if ((l==lay).sum())<a:
-                a = (l==lay).sum()
-                t = lay
-        BW = np.zeros((*l.shape()))+l.max()+1
-        for lay in range(l.max()):
-            bw = l==lay
-            li = np.where(bw == True)
-            r = range(len(li[0]))
-            random.shuffle(r)
-            li_temp = li[0]
-            x = li_temp[r]
-            li_temp = li[1]
-            y = li_temp[r]
-            x = x[:a]
-            y = y[:a]
-            BW[x,y] = lay
-    return BW        
-           
-os.chdir("/home/mict/Desktop/edges-master" )
-files = glob.glob(os.getcwd()+"/Data/*.mat")
-Labels = []
-Contours = []
-Images = []
-for x in range(files):
-    x=0
-    data = sio.loadmat(files[x])
+            Label[:,:,scan] = label
+            Label2[:,:,scan] = label2
+    return (Label,Label2,I,list)    
+
+for x in range(len(ls)):
+    #x=0
+    data = sio.loadmat(ls[x])
     I = data['images']    #data.keys()
     L1 = data['manualLayers1']
-    L2 = data['manualLayers1']
+    L2 = data['manualLayers2']
     nan_check = np.sum(np.sum(~isnan(L1),axis=0),axis=0)
     I = I[:,:,nan_check>0]
     Label1 = L1[:,:,nan_check>0]
@@ -98,8 +71,19 @@ for x in range(files):
     L_M1,C_M1,Im,temp = maps2labels(I,L1-1) # as python is 0 index
     L_M2,C_M2,temp,temp = maps2labels(I,L2-1) # as python is 0 index
     L,C,temp,temp = maps2labels(I,0.5*(L1+L2)-1) # as python is 0 index
-    Labels = Labels.append(L)
-    Contours = Contours.append(C)
-    Images = Images.append(Im)
-    
-    
+    if x==0:
+        Labels = np.concatenate((L_M1,L_M2),axis=2)
+        Contours = np.concatenate((C_M1,C_M2),axis=2)
+        Images = np.concatenate((Im,Im),axis=2)
+    else:
+        Labels = np.concatenate((Labels,L_M1,L_M2),axis=2)
+        Contours = np.concatenate((Contours,C_M1,C_M2),axis=2)
+        Images = np.concatenate((Images,Im,Im),axis=2)
+Labels = Labels[:,118:653,:]
+Contours = Contours[:,118:653,:]
+Images = Images[:,118:653,:]
+
+import scipy.io as sio
+sio.savemat('Data.mat', {'Images': Images, 'Label': Labels, 'Contour': Contours})
+import matplotlib.pyplot as plt
+imgplot = plt.imshow(Contours[:,:,0])    
