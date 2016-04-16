@@ -13,9 +13,9 @@
 Prof. Sina Farsiu's team from Duke has generously made the data available [here!](http://people.duke.edu/~sf59/Chiu_BOE_2014_dataset.htm)
 
 ## Results
-![Alt text](https://github.com/ultrai/Chap_1/blob/master/Images/out9.png)
-![Alt text](https://github.com/ultrai/Chap_1/blob/master/Images/out7.png)
-![Alt text](https://github.com/ultrai/Chap_1/blob/master/Images/out2.png)
+![Alt text](https://github.com/ultrai/Chap_1/blob/master/Results/out9.png)
+![Alt text](https://github.com/ultrai/Chap_1/blob/master/Results/out7.png)
+![Alt text](https://github.com/ultrai/Chap_1/blob/master/Results/out2.png)
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/out60.png)
 
 
