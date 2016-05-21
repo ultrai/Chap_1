@@ -29,3 +29,4 @@ Out_2 = cat(3,Out1_2,Out2_2,Out3_2);
 imwrite(mat2gray(Out_2),'segmentation.png','png')
 imwrite(mat2gray(I),'input.png','png')
 imwrite(mat2gray(Out),'segmentation2.png','png')
+figure,imshow(mat2gray(Out_2(115:115+236,135:135+236,:)))
