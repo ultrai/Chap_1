@@ -32,7 +32,7 @@ Evaluate models
 or
 >> run(Evaluation)  % if trained with main_cllassic
 ````
-Needs only 8GB of ram (for 1sec prediction opamp is needed)
+Needs only 8GB of ram (for 1sec prediction OpenMP is needed)
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/prediction.png)
 
 Test for an image
