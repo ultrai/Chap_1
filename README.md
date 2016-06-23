@@ -35,6 +35,9 @@ or
 Needs only 8GB of ram (for 1sec prediction OpenMP is needed)
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/prediction.png)
 
+moving on to single processor machine
+![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-1-procesor.png)
+
 Test for an image
 ``` bash
 % Img is the test image and models are trained with main_classic
