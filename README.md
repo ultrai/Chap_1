@@ -26,7 +26,7 @@ Train models
 or
 >> run(main_classic)  
 ````
-Evaluate models
+Evaluate models (6 trees)
 ```bash
 >> run(Evaluation_multicalss) % if trained with main_multiclass
 or
@@ -37,6 +37,10 @@ Needs only 8GB of ram (for 1sec prediction OpenMP is needed)
 
 moving on to single processor machine
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-1-procesor.png)
+
+No dedicated memory, no parallization results 1sec per tree
+![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-3.png)
+
 
 Test for an image
 ``` bash
