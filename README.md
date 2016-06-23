@@ -38,7 +38,7 @@ Needs only 8GB of ram (for 1sec prediction OpenMP is needed)
 moving on to single processor machine
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-1-procesor.png)
 
-worst time complexity i.e., No dedicated memory, no parallization, single thread  results in 0.5-1sec per tree
+worst time complexity i.e., No dedicated memory, no OpenMP, single thread  results in 0.5-1sec per tree
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-3.png)
 
 
