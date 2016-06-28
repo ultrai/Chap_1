@@ -28,7 +28,7 @@ Evaluate models (6 trees)
 or
 >> run(Evaluation)  % if trained with main_classic
 ````
-Needs only 8GB of ram (for 1sec prediction OpenMP is needed)
+Needs only 8GB of ram
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/prediction.png)
 
 moving on to single processor machine
