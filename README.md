@@ -14,10 +14,6 @@ Prof. Sina Farsiu's team from Duke has generously made the data available [here!
 
 ## Results
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/Results/out2.png)
-%![Alt text](https://github.com/ultrai/Chap_1/blob/master/Results/out7.png)
-%![Alt text](https://github.com/ultrai/Chap_1/blob/master/Results/out5.png)
-%![Alt text](https://github.com/ultrai/Chap_1/blob/master/out60.png)
-
 
 ## Usage
 Train models
@@ -30,7 +26,7 @@ Evaluate models (6 trees)
 ```bash
 >> run(Evaluation_multicalss) % if trained with main_multiclass
 or
->> run(Evaluation)  % if trained with main_cllassic
+>> run(Evaluation)  % if trained with main_classic
 ````
 Needs only 8GB of ram (for 1sec prediction OpenMP is needed)
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/prediction.png)
