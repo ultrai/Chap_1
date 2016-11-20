@@ -1,5 +1,5 @@
 # Retinal Layer delineation
-(Update: Pretrained models are released for evaluation and note that training a new model delets the models folder )
+(Update: Pretrained models are released for evaluation and note that training a new model deletes the 'models' folder )
 ## Computational Environment
 112GB Ram Ubuntu 14.04 
 
