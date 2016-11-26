@@ -28,7 +28,8 @@ Evaluate models (6 trees)
 or
 >> run(Evaluation)  % if trained with main_classic
 ````
-Needs only 8GB of ram
+Needs only 8GB of ram for evaluating 6 tree
+But 4 trees during evaluation are suffcient for crossing benchmark
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/prediction.png)
 
 moving on to single processor machine
