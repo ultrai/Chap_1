@@ -29,13 +29,13 @@ or
 >> run(Evaluation)  % if trained with main_classic
 ````
 Needs only 8GB of ram for evaluating 6 tree
-But 4 trees during evaluation are suffcient for crossing benchmark
+But 4 trees (0.25-0.3sec per tree) during evaluation are suffcient for crossing benchmark
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/prediction.png)
 
 moving on to single processor machine
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-1-procesor.png)
 
-worst time complexity i.e., No dedicated memory, no OpenMP, single thread  results in 0.5-1sec per tree
+worst time complexity i.e., No dedicated memory, no OpenMP, single thread  results in 1sec per tree
 ![Alt text](https://github.com/ultrai/Chap_1/blob/master/space-time-3.png)
 
 
