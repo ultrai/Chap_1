@@ -1,6 +1,5 @@
 # Retinal Layer delineation
-(Update: Pretrained models_multiclass (only trees as github forbids >25MB file) are released for evaluation and note that training a new model deletes the 'models' folder )
-(Update: Pretrained models (only trees as github forbids >25MB file) are released for evaluation and note that training a new model deletes the 'models' folder )
+(Update: Pretrained models_multiclass & models (only trees as github forbids >25MB file) are released for evaluation and note that training a new model deletes the corresponding folder )
 ## Computational Environment
 112GB Ram Ubuntu 14.04 
 
