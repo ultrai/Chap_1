@@ -1,5 +1,8 @@
 # Retinal Layer delineation
 (Update: Pretrained models_multiclass & models (only trees as github forbids >25MB file) are released for evaluation and note that training a new model deletes the corresponding folder )
+## Other baselines codes
+1. [Probabilistic Intra-Retinal Layer Segmentation in 3-D OCT Images Using Global Shape Regularization](https://github.com/FabianRathke/octSegmentation)
+
 ## Computational Environment
 112GB Ram Ubuntu 14.04 
 
@@ -56,3 +59,10 @@ Out = Out(:,120:650,:);
 imwrite(mat2gray(Out),['out.png'],'png')
 
 ```
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
