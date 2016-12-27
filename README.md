@@ -2,6 +2,9 @@
 (Update: Pretrained models_multiclass & models (only trees as github forbids >25MB file) are released for evaluation and note that training a new model deletes the corresponding folder )
 ## Other baselines codes
 1. [Probabilistic Intra-Retinal Layer Segmentation in 3-D OCT Images Using Global Shape Regularization](https://github.com/FabianRathke/octSegmentation)
+2.[An Open Source Software for Computer-aided Segmentation of Retinal Layers in Optical Coherence Tomography Images.](https://github.com/pangyuteng/caserel)
+3.[OCTSEG ](https://www5.cs.fau.de/research/software/octseg/)
+
 
 ## Computational Environment
 112GB Ram Ubuntu 14.04 
