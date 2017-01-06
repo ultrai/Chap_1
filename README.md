@@ -1,5 +1,6 @@
 # Retinal Layer delineation
 update (6 jan 2017): Results for evaluation are available [here] (https://drive.google.com/file/d/0BxTWCAbuRb6aN3FEN24tTHRSQnM/view?usp=sharing) (Pred is the variable name) it correponds to [temp.mat] (https://github.com/ultrai/Chap_1/blob/master/Evaluation.m#L89)
+
 (Update: Pretrained models_multiclass & models (only trees as github forbids >25MB file) are released for evaluation and note that training a new model deletes the corresponding folder )
 ## Other baselines codes
 1. [Probabilistic Intra-Retinal Layer Segmentation in 3-D OCT Images Using Global Shape Regularization](https://github.com/FabianRathke/octSegmentation)
